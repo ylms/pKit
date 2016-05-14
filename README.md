@@ -18,8 +18,9 @@ Planned stuff:
 > self explanatory
 
 ### Step 2: Require setup.php
-> Goto your index.php and require the _setup.php. 
+> Goto your index.php and require the setup.php.
 > After this, setup the config.php and you're done. 
+> (the index.php is an example. you might see that its quite simple)
 
 ## Version
 0.1
