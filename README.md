@@ -39,15 +39,16 @@ new Route('/{string:text}', IRoute ...); // Your variable name is "text" that ha
 new Route('/{bool:trueOrFalse}', IRoute ...); // Your variable name is "trueOrFalse" that has an boolean as value.
 new Route('/{base64:decodedBase64Code}', IRoute ...); // Your variable name is "decodedBase64Code" that has a decoded base64 code as value.
 ```
-Of course you can use more than one parameter in an url (example for a calculator via URL):
+>Of course you can use more than one parameter in an url (example for a calculator via URL):
+
 ```php
 new Route('/calc/{int:number1}/{int:numer2}', IRoute ...);
 ```
 
 ## Version
-0.1
+>0.1
 
 License
 ----
 
-MIT
+>MIT
