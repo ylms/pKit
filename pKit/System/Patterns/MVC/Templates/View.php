@@ -30,11 +30,11 @@ namespace pKit\System\Patterns\MVC\Templates
         {
             if(is_callable($val))
             {
-                $this->vars[] = new TemplateVariableCallable($var, $val);
+                $this->vars[$var] = new TemplateVariableCallable($var, $val);
             }
             else
             {
-                $this->vars[] = new TemplateVariableString($var, $val);
+                $this->vars[$var] = new TemplateVariableString($var, $val);
             }
         }
 
@@ -44,12 +44,9 @@ namespace pKit\System\Patterns\MVC\Templates
          */
         public function __get($var)
         {
-            foreach($this->vars as $_var)
+            if(isset($this->vars[$var]))
             {
-                if($_var->getVariable() == $var)
-                {
-                    return $_var;
-                }
+                return $this->vars[$var];
             }
 
             return new NullViewVariable($var);

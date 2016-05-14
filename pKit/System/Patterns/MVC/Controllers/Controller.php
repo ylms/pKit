@@ -6,6 +6,8 @@ namespace pKit\System\Patterns\MVC\Controllers
     use App\Models\User\User;
     use pKit\System\App;
     use App\Models\User\UserFactory;
+    use pKit\System\Utils\Password\HashedPassword;
+    use pKit\System\Utils\Password\RawPassword;
 
     abstract class Controller
     {
@@ -40,12 +42,20 @@ namespace pKit\System\Patterns\MVC\Controllers
         {
             if((gettype($this->session) != 'object' && $this->session == -1) || $refresh)
             {
-                if(isset($_SESSION['sessionid']))
+                if(isset($_SESSION['sessionid'], $_SESSION['uid'], $_SESSION['timestamp']))
                 {
                     $userFactory = $this->getControllerParameters()->getModelsManager()->get(UserFactory::class);
-                    $user = $userFactory->getByColumn('sessionid', $_SESSION['sessionid']);
+                    $user = $userFactory->getByColumn('id', $_SESSION['uid']);
 
-                    $this->session = $user;
+                    if($user != null)
+                    {
+                        $sessionIdHash = new RawPassword($user->getRow()->id.$user->getRow()->username.$_SESSION['timestamp']);
+
+                        if($sessionIdHash->equals(new HashedPassword($user->getRow()->sessionid)))
+                        {
+                            $this->session = $user;
+                        }
+                    }
                 }
                 else
                 {

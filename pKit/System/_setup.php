@@ -20,6 +20,8 @@ use pKit\System\Patterns\MVC\Models\Handlers\ModelsManager;
 
 use pKit\System\Common;
 
+session_start();
+
 require_once __DIR__ . '/Exceptions/pKitException.php';
 require_once __DIR__ . '/Config.php';
 
