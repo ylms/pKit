@@ -6,6 +6,8 @@ It includes
 
   - M(odel) - V(iew) - C(ontroller) - System
   - Routing
+  - Sessions
+  - Password Hashing
 
 Planned stuff:
 
