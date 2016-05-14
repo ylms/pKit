@@ -1,6 +1,6 @@
 # pKit
 
-pKit, also called phpKit, ist a small library for PHP projects. 
+pKit, also called phpKit, is a small library for PHP projects. 
 
 It includes
 
