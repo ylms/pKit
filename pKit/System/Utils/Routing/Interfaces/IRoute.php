@@ -4,6 +4,10 @@ namespace pKit\System\Utils\Routing\Interfaces
 {
     use pKit\System\Utils\Routing\Route;
 
+    /**
+     * Interface IRoute
+     * @package pKit\System\Utils\Routing\Interfaces
+     */
     interface IRoute
     {
         /**

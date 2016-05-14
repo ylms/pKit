@@ -6,6 +6,10 @@ namespace App\Controllers
     use pKit\System\Utils\Routing\Interfaces\IRoute;
     use pKit\System\Utils\Routing\Route;
 
+    /**
+     * Class IndexController
+     * @package App\Controllers
+     */
     final class IndexController extends Controller implements IRoute
     {
         /**

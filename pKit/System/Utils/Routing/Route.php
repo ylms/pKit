@@ -4,6 +4,10 @@ namespace pKit\System\Utils\Routing
 {
     use pKit\System\Utils\Routing\Interfaces\IRoute;
 
+    /**
+     * Class Route
+     * @package pKit\System\Utils\Routing
+     */
     final class Route
     {
         private $url;

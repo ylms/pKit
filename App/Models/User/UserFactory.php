@@ -5,6 +5,10 @@ namespace App\Models\User
     use pKit\System\Patterns\MVC\Models\AbstractFactory;
     use pKit\System\Patterns\MVC\Models\Handlers\ModelsManager;
 
+    /**
+     * Class UserFactory
+     * @package App\Models\User
+     */
     final class UserFactory extends AbstractFactory
     {
         /**

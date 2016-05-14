@@ -2,6 +2,10 @@
 
 namespace pKit\System\Patterns\MVC\Templates\Variables
 {
+    /**
+     * Class NullTemplateVariableCallback
+     * @package pKit\System\Patterns\MVC\Templates\Variables
+     */
     final class NullTemplateVariableCallback extends NullVariable
     {
         private $var;

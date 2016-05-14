@@ -4,6 +4,10 @@ namespace pKit\System\Patterns\MVC\Templates\Managers
 {
     use pKit\System\Patterns\MVC\Templates\Template;
 
+    /**
+     * Class TemplateManager
+     * @package pKit\System\Patterns\MVC\Templates\Managers
+     */
     final class TemplateManager
     {
         private $cachedTemplates = [];

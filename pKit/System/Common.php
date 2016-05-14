@@ -2,6 +2,10 @@
 
 namespace pKit\System
 {
+    /**
+     * Class Common
+     * @package pKit\System
+     */
     class Common
     {
         private static $config;

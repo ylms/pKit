@@ -4,6 +4,10 @@ namespace pKit\System {
 
     use pKit\System\Exceptions\pKitException;
 
+    /**
+     * Class Config
+     * @package pKit\System
+     */
     final class Config
     {
         private $config = [];

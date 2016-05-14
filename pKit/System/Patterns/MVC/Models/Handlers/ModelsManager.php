@@ -5,6 +5,10 @@ namespace pKit\System\Patterns\MVC\Models\Handlers
 
     use pKit\System\Patterns\MVC\Models\AbstractFactoryObject;
 
+    /**
+     * Class ModelsManager
+     * @package pKit\System\Patterns\MVC\Models\Handlers
+     */
     final class ModelsManager
     {
         private $cachedModels = [];

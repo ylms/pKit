@@ -7,6 +7,10 @@ namespace pKit\System\Patterns\MVC\Templates
     use pKit\System\Patterns\MVC\Templates\Variables\NullViewVariable;
     use pKit\System\Patterns\MVC\Templates\Variables\NullViewVariableCallback;
 
+    /**
+     * Class View
+     * @package pKit\System\Patterns\MVC\Templates
+     */
     final class View
     {
         private $vars = [];

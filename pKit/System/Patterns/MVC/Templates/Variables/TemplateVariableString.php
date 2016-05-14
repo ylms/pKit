@@ -2,6 +2,10 @@
 
 namespace pKit\System\Patterns\MVC\Templates\Variables
 {
+    /**
+     * Class TemplateVariableString
+     * @package pKit\System\Patterns\MVC\Templates\Variables
+     */
     final class TemplateVariableString
     {
         private $variable;

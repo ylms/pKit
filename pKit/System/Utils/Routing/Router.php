@@ -8,6 +8,10 @@ namespace pKit\System\Utils\Routing
     use pKit\System\Utils\Routing\Helpers\RouteHelper;
     use pKit\System\Utils\Routing\RouteInfoResults;
 
+    /**
+     * Class Router
+     * @package pKit\System\Utils\Routing
+     */
     final class Router
     {
         private $routeManager;

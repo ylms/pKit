@@ -2,6 +2,10 @@
 
 namespace pKit\System\Utils\Routing
 {
+    /**
+     * Class RouterInfo
+     * @package pKit\System\Utils\Routing
+     */
     final class RouterInfo
     {
         private $route;

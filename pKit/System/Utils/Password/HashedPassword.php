@@ -2,6 +2,10 @@
 
 namespace pKit\System\Utils\Password
 {
+    /**
+     * Class HashedPassword
+     * @package pKit\System\Utils\Password
+     */
     final class HashedPassword
     {
         private $hash;

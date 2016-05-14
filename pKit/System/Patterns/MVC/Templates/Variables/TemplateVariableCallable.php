@@ -2,6 +2,10 @@
 
 namespace pKit\System\Patterns\MVC\Templates\Variables
 {
+    /**
+     * Class TemplateVariableCallable
+     * @package pKit\System\Patterns\MVC\Templates\Variables
+     */
     final class TemplateVariableCallable
     {
         private $var;

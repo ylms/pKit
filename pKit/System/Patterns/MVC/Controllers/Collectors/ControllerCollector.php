@@ -4,6 +4,10 @@ namespace pKit\System\Patterns\MVC\Controllers\Collectors
 {
     use pKit\System\Patterns\MVC\Controllers\Controller;
 
+    /**
+     * Class ControllerCollector
+     * @package pKit\System\Patterns\MVC\Controllers\Collectors
+     */
     final class ControllerCollector
     {
         private $controllers = [];

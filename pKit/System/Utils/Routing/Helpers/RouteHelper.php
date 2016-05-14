@@ -5,6 +5,10 @@ namespace pKit\System\Utils\Routing\Helpers
 
     use pKit\System\Common;
 
+    /**
+     * Class RouteHelper
+     * @package pKit\System\Utils\Routing\Helpers
+     */
     final class RouteHelper
     {
         /**

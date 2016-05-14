@@ -5,6 +5,10 @@ namespace pKit\System\Utils\Routing\Collectors
     use pKit\System\Exceptions\pKitException;
     use pKit\System\Utils\Routing\Route;
 
+    /**
+     * Class RouteCollector
+     * @package pKit\System\Utils\Routing\Collectors
+     */
     final class RouteCollector
     {
         private $routes = [];

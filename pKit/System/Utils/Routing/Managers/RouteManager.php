@@ -4,6 +4,10 @@ namespace pKit\System\Utils\Routing\Managers
 {
     use pKit\System\Utils\Routing\Collectors\RouteCollector;
 
+    /**
+     * Class RouteManager
+     * @package pKit\System\Utils\Routing\Managers
+     */
     final class RouteManager
     {
         private $routeCollector;

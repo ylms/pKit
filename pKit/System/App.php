@@ -2,6 +2,10 @@
 
 namespace pKit\System
 {
+    /**
+     * Class App
+     * @package pKit\System
+     */
     final class App
     {
         

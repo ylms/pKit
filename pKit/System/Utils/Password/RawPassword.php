@@ -2,6 +2,10 @@
 
 namespace pKit\System\Utils\Password
 {
+    /**
+     * Class RawPassword
+     * @package pKit\System\Utils\Password
+     */
     final class RawPassword
     {
         private $rawPassword;

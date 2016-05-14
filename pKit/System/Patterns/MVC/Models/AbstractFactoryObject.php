@@ -5,6 +5,10 @@ namespace pKit\System\Patterns\MVC\Models
 
     use pKit\System\Patterns\MVC\Models\Handlers\ModelsManager;
 
+    /**
+     * Class AbstractFactoryObject
+     * @package pKit\System\Patterns\MVC\Models
+     */
     class AbstractFactoryObject
     {
         private $row;

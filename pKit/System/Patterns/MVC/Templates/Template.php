@@ -9,6 +9,10 @@ namespace pKit\System\Patterns\MVC\Templates
     use pKit\System\Patterns\MVC\Templates\Variables\TemplateVariableCallable;
     use pKit\System\Patterns\MVC\Templates\Variables\NullTemplateVariableCallback;
 
+    /**
+     * Class Template
+     * @package pKit\System\Patterns\MVC\Templates
+     */
     final class Template
     {
         private $file;

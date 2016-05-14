@@ -9,6 +9,10 @@ namespace pKit\System\Patterns\MVC\Controllers
     use pKit\System\Utils\Password\HashedPassword;
     use pKit\System\Utils\Password\RawPassword;
 
+    /**
+     * Class Controller
+     * @package pKit\System\Patterns\MVC\Controllers
+     */
     abstract class Controller
     {
         private $controllerParameters;

@@ -6,6 +6,10 @@ namespace pKit\System\Patterns\MVC\Models
     use pKit\System\Exceptions\pKitException;
     use pKit\System\Patterns\MVC\Models\Handlers\ModelsManager;
 
+    /**
+     * Class AbstractFactory
+     * @package pKit\System\Patterns\MVC\Models
+     */
     abstract class AbstractFactory
     {
         abstract public function create($row);

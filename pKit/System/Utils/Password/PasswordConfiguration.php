@@ -2,6 +2,10 @@
 
 namespace pKit\System\Utils\Password
 {
+    /**
+     * Class PasswordConfiguration
+     * @package pKit\System\Utils\Password
+     */
     final class PasswordConfiguration
     {
         /**

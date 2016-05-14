@@ -8,7 +8,10 @@ namespace pKit\System\Patterns\MVC\Controllers
     use pKit\System\Patterns\MVC\Templates\View;
     use pKit\System\Patterns\MVC\Models\Handlers\ModelsManager;
 
-
+    /**
+     * Class ControllerParameters
+     * @package pKit\System\Patterns\MVC\Controllers
+     */
     final class ControllerParameters
     {
         private $app;

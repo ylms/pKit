@@ -2,7 +2,10 @@
 
 namespace pKit\System\Exceptions
 {
-
+    /**
+     * Class pKitException
+     * @package pKit\System\Exceptions
+     */
     final class pKitException extends \Exception
     {
         private $object;
