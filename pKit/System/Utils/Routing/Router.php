@@ -12,13 +12,17 @@ namespace pKit\System\Utils\Routing
     {
         private $routeManager;
 
+        /**
+         * Router constructor.
+         * @param RouteManager $routeManager
+         */
         public function __construct(RouteManager $routeManager)
         {
             $this->routeManager = $routeManager;
         }
 
         /*
-         * @params String $route
+         * @params string $route
          * @params Callable $callback
          */
         public function listenOn($route, callable $callback)
@@ -63,11 +67,20 @@ namespace pKit\System\Utils\Routing
             }
         }
 
+        /**
+         * @param string $key
+         * @return string
+         */
         public function getUrlParameter($key)
         {
             return RouteHelper::getUrl($key);
         }
 
+        /**
+         * @param RouterInfo $routerInfo
+         * @param callable $callback
+         * @return mixed
+         */
         private function prepareRoute(RouterInfo $routerInfo, callable $callback)
         {
             $routerResult = new RouterResult($routerInfo);

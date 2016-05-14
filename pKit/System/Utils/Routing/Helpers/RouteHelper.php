@@ -7,6 +7,11 @@ namespace pKit\System\Utils\Routing\Helpers
 
     final class RouteHelper
     {
+        /**
+         * @param string $url
+         * @return string
+         */
+
         public static function validateUrl($url)
         {
             $_url = '';
@@ -21,6 +26,11 @@ namespace pKit\System\Utils\Routing\Helpers
             return $_url;
         }
 
+        /**
+         * @param string $url
+         * @param string $pattern
+         * @return array
+         */
         public static function compareURLtoPattern($url, $pattern)
         {
             $splitURL = explode('/', $url);
@@ -105,6 +115,10 @@ namespace pKit\System\Utils\Routing\Helpers
             return $return;
         }
 
+        /**
+         * @param string $key
+         * @return string
+         */
         public static function getUrl($key)
         {
             if(isset($_GET[$key]))

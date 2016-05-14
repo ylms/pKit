@@ -8,16 +8,26 @@ namespace pKit\System\Patterns\MVC\Controllers\Collectors
     {
         private $controllers = [];
 
+        /**
+         * @param Controller $controller
+         */
         public function add(Controller $controller)
         {
             $this->controllers[] = $controller;
         }
 
+        /**
+         * @return array
+         */
         public function getAll()
         {
             return $this->controllers;
         }
 
+        /**
+         * @param mixed $instance
+         * @return array
+         */
         public function getByInstance($instance)
         {
             $result = [];

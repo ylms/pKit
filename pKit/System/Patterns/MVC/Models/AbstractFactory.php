@@ -17,6 +17,12 @@ namespace pKit\System\Patterns\MVC\Models
 
         private $cachedRows = [];
 
+        /**
+         * AbstractFactory constructor.
+         * @param ModelsManager $modelsManager
+         * @param \PDO $connection
+         * @param string|null $table
+         */
         public function __construct(ModelsManager $modelsManager, \PDO $connection, $table = null)
         {
             $this->modelsManager = $modelsManager;
@@ -25,16 +31,26 @@ namespace pKit\System\Patterns\MVC\Models
             $this->table = $table;
         }
 
+        /**
+         * @return string
+         */
         public function getTable()
         {
             return $this->table;
         }
 
+        /**
+         * @return \PDO
+         */
         public function getConnection()
         {
             return $this->connection;
         }
 
+        /**
+         * @param array $params
+         * @return null|AbstractFactoryObject
+         */
         public function _create(array $params)
         {
             $queryString = 'INSERT INTO `'.$this->table.'` SET ';
@@ -68,11 +84,21 @@ namespace pKit\System\Patterns\MVC\Models
 
         }
 
+        /**
+         * @return ModelsManager
+         */
         public function getModelsManager()
         {
             return $this->modelsManager;
         }
 
+        /**
+         * @param string $row
+         * @param mixed $val
+         * @param bool $reload
+         * @return mixed|null|void|AbstractFactoryObject
+         * @throws pKitException
+         */
         public function getByColumn($row, $val, $reload = false)
         {
             if($this->table == null)
@@ -113,6 +139,12 @@ namespace pKit\System\Patterns\MVC\Models
             return null;
         }
 
+        /**
+         * @param int $id
+         * @param bool $reload
+         * @return null|AbstractFactoryObject
+         * @throws pKitException
+         */
         public function getById($id, $reload = false)
         {
             return $this->getByColumn('id', $id, $reload);

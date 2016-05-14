@@ -17,6 +17,14 @@ namespace pKit\System\Patterns\MVC\Controllers
         private $view;
         private $modelsManager;
 
+        /**
+         * ControllerParameters constructor.
+         * @param App $app
+         * @param ControllerCollector $controllerCollector
+         * @param TemplateManager $templateManager
+         * @param View $view
+         * @param ModelsManager $modelsManager
+         */
         public function __construct(App $app, ControllerCollector $controllerCollector, TemplateManager $templateManager, View $view, ModelsManager $modelsManager)
         {
             $this->app = $app;
@@ -26,26 +34,41 @@ namespace pKit\System\Patterns\MVC\Controllers
             $this->modelsManager = $modelsManager;
         }
 
+        /**
+         * @return App
+         */
         public function getApp()
         {
             return $this->app;
         }
 
+        /**
+         * @return ControllerCollector
+         */
         public function getControllerCollector()
         {
             return $this->controllerCollector;
         }
 
+        /**
+         * @return TemplateManager
+         */
         public function getTemplateManager()
         {
             return $this->templateManager;
         }
 
+        /**
+         * @return View
+         */
         public function getView()
         {
             return $this->view;
         }
 
+        /**
+         * @return ModelsManager
+         */
         public function getModelsManager()
         {
             return $this->modelsManager;

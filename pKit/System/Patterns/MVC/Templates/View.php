@@ -11,6 +11,10 @@ namespace pKit\System\Patterns\MVC\Templates
     {
         private $vars = [];
 
+        /**
+         * @param Template $tpl
+         * @param bool $once
+         */
         public function display(Template $tpl, $once = false)
         {
             $tpl->setView($this);
@@ -18,6 +22,10 @@ namespace pKit\System\Patterns\MVC\Templates
             $tpl->display($once);
         }
 
+        /**
+         * @param string $var
+         * @param mixed $val
+         */
         public function __set($var, $val)
         {
             if(is_callable($val))
@@ -30,6 +38,10 @@ namespace pKit\System\Patterns\MVC\Templates
             }
         }
 
+        /**
+         * @param string $var
+         * @return TextVariableString|NullViewVariable
+         */
         public function __get($var)
         {
             foreach($this->vars as $_var)
@@ -43,7 +55,12 @@ namespace pKit\System\Patterns\MVC\Templates
             return new NullViewVariable($var);
         }
 
-        public function __call($var, $args)
+        /**
+         * @param string $var
+         * @param array $args
+         * @return mixed|NullViewVariableCallback
+         */
+        public function __call($var, array $args)
         {
             $variable = $this->$var;
 

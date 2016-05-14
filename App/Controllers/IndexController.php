@@ -8,13 +8,19 @@ namespace App\Controllers
 
     final class IndexController extends Controller implements IRoute
     {
-
-        public function onCall(Route $route, $vars)
+        /**
+         * @param Route $route
+         * @param array $vars
+         */
+        public function onCall(Route $route, array $vars)
         {
             echo "<pre>";
             var_dump($vars);
         }
 
+        /**
+         * @return array
+         */
         public function getRoutes()
         {
             return [

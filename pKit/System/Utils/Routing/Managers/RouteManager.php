@@ -8,11 +8,18 @@ namespace pKit\System\Utils\Routing\Managers
     {
         private $routeCollector;
 
+        /**
+         * RouteManager constructor.
+         * @param RouteCollector $routeCollector
+         */
         public function __construct(RouteCollector $routeCollector)
         {
             $this->routeCollector = $routeCollector;
         }
 
+        /**
+         * @return RouteCollector
+         */
         public function getCollector()
         {
             return $this->routeCollector;

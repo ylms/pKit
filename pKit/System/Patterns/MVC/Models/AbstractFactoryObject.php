@@ -12,6 +12,13 @@ namespace pKit\System\Patterns\MVC\Models
         private $connection;
         private $modelsManager;
 
+        /**
+         * AbstractFactoryObject constructor.
+         * @param mixed $row
+         * @param \PDO $connection
+         * @param ModelsManager $modelsManager
+         * @param string $table
+         */
         public function __construct($row, \PDO $connection, ModelsManager $modelsManager, $table)
         {
             $this->row = $row;
@@ -20,6 +27,9 @@ namespace pKit\System\Patterns\MVC\Models
             $this->table = $table;
         }
 
+        /**
+         * @return void
+         */
         public function remove()
         {
             try
@@ -33,11 +43,19 @@ namespace pKit\System\Patterns\MVC\Models
             }
         }
 
+        /**
+         * @return mixed
+         */
         public function getRow()
         {
             return $this->row;
         }
 
+        /**
+         * @param string $row
+         * @param mixed $val
+         * @return $this
+         */
         public function set($row, $val)
         {
             try
@@ -57,6 +75,11 @@ namespace pKit\System\Patterns\MVC\Models
             }
         }
 
+        /**
+         * @param string $column
+         * @param mixed $val
+         * @return bool
+         */
         public function updateRowByColumn($column, $val)
         {
             try

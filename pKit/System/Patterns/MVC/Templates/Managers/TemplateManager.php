@@ -10,11 +10,19 @@ namespace pKit\System\Patterns\MVC\Templates\Managers
 
         private $path;
 
+        /**
+         * TemplateManager constructor.
+         * @param string $path
+         */
         public function __construct($path)
         {
             $this->path = $path;
         }
 
+        /**
+         * @param string $tpl
+         * @return Template
+         */
         private function create($tpl)
         {
             $tpl = new Template($this->path, $tpl, $this);
@@ -23,6 +31,10 @@ namespace pKit\System\Patterns\MVC\Templates\Managers
             return $tpl;
         }
 
+        /**
+         * @param string $tpl
+         * @return null|Template
+         */
         private function get($tpl)
         {
             foreach($this->cachedTemplates as $template)
@@ -36,11 +48,19 @@ namespace pKit\System\Patterns\MVC\Templates\Managers
             return null;
         }
 
+        /**
+         * @param string $tpl
+         * @return bool
+         */
         private function exists($tpl)
         {
             return $this->get($tpl) != null;
         }
 
+        /**
+         * @param string $file
+         * @return null|Template
+         */
         public function make($file)
         {
             if(!$this->exists($file))

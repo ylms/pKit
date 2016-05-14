@@ -6,7 +6,16 @@ namespace pKit\System\Utils\Routing\Interfaces
 
     interface IRoute
     {
-        public function onCall(Route $route, $vars);
+        /**
+         * @param Route $route
+         * @param array $vars
+         * @return mixed
+         */
+        public function onCall(Route $route, array $vars);
+
+        /**
+         * @return array
+         */
         public function getRoutes();
     }
 }

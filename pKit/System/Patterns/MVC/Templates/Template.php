@@ -18,6 +18,12 @@ namespace pKit\System\Patterns\MVC\Templates
 
         private $view = null;
 
+        /**
+         * Template constructor.
+         * @param string $path
+         * @param string $file
+         * @param TemplateManager $templateManager
+         */
         public function __construct($path, $file, TemplateManager $templateManager)
         {
             $this->file = $file;
@@ -25,26 +31,42 @@ namespace pKit\System\Patterns\MVC\Templates
             $this->templateManager = $templateManager;
         }
 
+        /**
+         * @return string
+         */
         public function getFullPath()
         {
             return $this->file.'/'.$this->path;
         }
 
+        /**
+         * @return TemplateManager
+         */
         public function getTemplateManager()
         {
             return $this->templateManager;
         }
 
+        /**
+         * @param View $view
+         */
         public function setView(View $view)
         {
             $this->view = $view;
         }
 
+        /**
+         * @return View
+         */
         public function getView()
         {
             return $this->view;
         }
 
+        /**
+         * @param string $var
+         * @param string $val
+         */
         public function __set($var, $val)
         {
             if(is_callable($val))
@@ -57,6 +79,10 @@ namespace pKit\System\Patterns\MVC\Templates
             }
         }
 
+        /**
+         * @param string $var
+         * @return TemplateVariableString|NullTemplateVariable
+         */
         public function __get($var)
         {
             foreach($this->vars as $_var)
@@ -70,7 +96,12 @@ namespace pKit\System\Patterns\MVC\Templates
             return new NullTemplateVariable($var, $this->file);
         }
 
-        public function __call($var, $args)
+        /**
+         * @param string $var
+         * @param array $args
+         * @return mixed|NullTemplateVariableCallback
+         */
+        public function __call($var, array $args)
         {
             $variable = $this->$var;
 
@@ -84,6 +115,9 @@ namespace pKit\System\Patterns\MVC\Templates
             }
         }
 
+        /**
+         * @param bool $once
+         */
         public function display($once = false)
         {
 
