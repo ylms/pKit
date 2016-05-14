@@ -42,7 +42,7 @@ namespace pKit\System\Patterns\MVC\Controllers
         {
             if((gettype($this->session) != 'object' && $this->session == -1) || $refresh)
             {
-                if(isset($_SESSION['sessionid'], $_SESSION['uid'], $_SESSION['timestamp']))
+                if(isset($_SESSION['uid'], $_SESSION['timestamp']))
                 {
                     $userFactory = $this->getControllerParameters()->getModelsManager()->get(UserFactory::class);
                     $user = $userFactory->getByColumn('id', $_SESSION['uid']);
