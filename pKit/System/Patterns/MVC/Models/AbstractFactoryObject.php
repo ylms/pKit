@@ -28,6 +28,30 @@ namespace pKit\System\Patterns\MVC\Models
         }
 
         /**
+         * @return \PDO
+         */
+        public function getConnection()
+        {
+            return $this->connection;
+        }
+
+        /**
+         * @return ModelsManager
+         */
+        public function getModelsManager()
+        {
+            return $this->modelsManager;
+        }
+
+        /**
+         * @return string
+         */
+        public function getTable()
+        {
+            return $this->table;
+        }
+
+        /**
          * @return void
          */
         public function remove()

@@ -76,6 +76,14 @@ namespace pKit\System\Patterns\MVC\Templates\Variables
         }
 
         /**
+         * @return bool
+         */
+        public function isNull()
+        {
+            return is_null($this->value);
+        }
+
+        /**
          * @param string $str
          * @return bool
          */

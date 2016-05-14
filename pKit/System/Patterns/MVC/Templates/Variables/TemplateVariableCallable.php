@@ -19,6 +19,14 @@ namespace pKit\System\Patterns\MVC\Templates\Variables
         }
 
         /**
+         * @return bool
+         */
+        public function isNull()
+        {
+            return false;
+        }
+
+        /**
          * @return string
          */
         public function getVariable()

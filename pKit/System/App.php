@@ -4,6 +4,7 @@ namespace pKit\System
 {
     final class App
     {
+        
         private $config;
         private $connection;
 

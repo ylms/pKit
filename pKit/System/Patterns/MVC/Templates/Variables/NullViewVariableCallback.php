@@ -2,7 +2,7 @@
 
 namespace pKit\System\Patterns\MVC\Templates\Variables
 {
-    final class NullViewVariableCallback
+    final class NullViewVariableCallback extends NullVariable
     {
         private $var;
         private $args;

@@ -14,8 +14,11 @@ namespace App\Controllers
          */
         public function onCall(Route $route, array $vars)
         {
-            echo "<pre>";
-            var_dump($vars);
+            if($this->checkAuth(2)) echo "hallo";
+
+            $tpl = $this->getControllerParameters()->getTemplateManager()->make('test.tpl.php');
+
+            $this->getControllerParameters()->getView()->display($tpl);
         }
 
         /**
