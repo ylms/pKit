@@ -11,14 +11,16 @@ namespace App\Controllers
 
         public function onCall(Route $route, $vars)
         {
-            echo 1;
+            echo "<pre>";
+            var_dump($vars);
         }
 
         public function getRoutes()
         {
             return [
                 new Route('/', $this),
-                new Route('/index', $this)
+                new Route('/index', $this),
+                new Route('/{string:str}/{bool:boolean}/{int:zahl}/{base64:base}/{float:float}', $this)
             ];
         }
     }

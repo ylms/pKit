@@ -13,7 +13,12 @@ namespace pKit\System
 
         public static function redirect($url)
         {
-            header('Location: '.self::$config->getPaths()->site.'/'.$url);
+            header('Location: ' . self::$config->getPaths()->site . '/' . $url);
+        }
+
+        public static function isDecimal($val)
+        {
+            return is_numeric($val) && floor($val) != $val;
         }
     }
 }

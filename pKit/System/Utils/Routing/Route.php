@@ -4,7 +4,7 @@ namespace pKit\System\Utils\Routing
 {
     use pKit\System\Utils\Routing\Interfaces\IRoute;
 
-    class Route
+    final class Route
     {
         private $url;
         private $controller;

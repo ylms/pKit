@@ -2,6 +2,9 @@
 
 namespace pKit\System\Utils\Routing\Helpers
 {
+
+    use pKit\System\Common;
+
     final class RouteHelper
     {
         public static function validateUrl($url)
@@ -23,7 +26,14 @@ namespace pKit\System\Utils\Routing\Helpers
             $splitURL = explode('/', $url);
             $splitPattern = explode('/', $pattern);
 
-            $compareData = ['int' => 0, 'string' => 0, 'equal' => 0];
+            $compareData = [
+                'int' => 0,
+                'string' => 0,
+                'boolean' => 0,
+                'base64' => 0,
+                'float' => 0,
+                'equal' => 0
+            ];
 
             $return = ['parameters' => [], 'matches' => false];
 
@@ -42,7 +52,31 @@ namespace pKit\System\Utils\Routing\Helpers
                             $commandInfo = explode(':', substr($splitPattern[$i], 1, strlen($splitPattern[$i])-2));
                             if(count($commandInfo) == 2)
                             {
-                                if($commandInfo[0] == 'string')
+                                if($commandInfo[0] == 'float')
+                                {
+                                    if(Common::isDecimal($splitURL[$i]))
+                                    {
+                                        $compareData['float']++;
+                                        $return['parameters'][] = ['name' => $commandInfo[1], 'value' => (float) $splitURL[$i]];
+                                    }
+                                }
+                                else if($commandInfo[0] == 'base64')
+                                {
+                                    if(base64_encode(base64_decode($splitURL[$i], true)) === $splitURL[$i])
+                                    {
+                                        $compareData['base64']++;
+                                        $return['parameters'][] = ['name' => $commandInfo[1], 'value' => base64_decode($splitURL[$i])];
+                                    }
+                                }
+                                else if($commandInfo[0] == 'bool')
+                                {
+                                    if(strtolower($splitURL[$i]) == 'true' || strtolower($splitURL[$i]) == 'false')
+                                    {
+                                        $compareData['boolean']++;
+                                        $return['parameters'][] = ['name' => $commandInfo[1], 'value' => strtolower($splitURL[$i]) == "true" ? true : false];
+                                    }
+                                }
+                                else if($commandInfo[0] == 'string')
                                 {
                                     $compareData['string']++;
                                     $return['parameters'][] = ['name' => $commandInfo[1], 'value' => $splitURL[$i]];
@@ -52,14 +86,14 @@ namespace pKit\System\Utils\Routing\Helpers
                                     if(ctype_digit($splitURL[$i]))
                                     {
                                         $compareData['int']++;
-                                        $return['parameters'][] = ['name' => $commandInfo[1], 'value' => $splitURL[$i]];
+                                        $return['parameters'][] = ['name' => $commandInfo[1], 'value' => (int) $splitURL[$i]];
                                     }
                                 }
                             }
                         }
                     }
 
-                    if(($compareData['int']+$compareData['string']+$compareData['equal']) == count($splitURL))
+                    if(($compareData['int']+$compareData['float']+$compareData['string']+$compareData['boolean']+$compareData['base64']+$compareData['equal']) == count($splitURL))
                     {
                         $return['matches'] = true;
 
