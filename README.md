@@ -24,7 +24,7 @@ Planned stuff:
 > After this, setup the config.php and you're done. 
 > (the index.php is an example. you might see that its quite simple)
 
-## Usefull stuff
+## Useful stuff
 ### Routing
 > The routing allows you to set variables. You can decide between integers, floats, strings, booleans and base64-code. 
 > The following code is how a variable in the url-pattern looks like
