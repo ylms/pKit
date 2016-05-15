@@ -31,6 +31,16 @@ namespace pKit\System\Patterns\MVC\Templates\Variables
         }
 
         /**
+         * @param $name
+         * @param $arguments
+         * @return mixed
+         */
+        public function __call($name, $arguments)
+        {
+            return call_user_func_array([$this->value, $name], $arguments);
+        }
+
+        /**
          * @return string
          */
         public function filter()

@@ -27,7 +27,7 @@ namespace pKit\System
         }
 
         /**
-         * @param string $val
+         * @param mixed $val
          * @return bool
          */
         public static function isDecimal($val)

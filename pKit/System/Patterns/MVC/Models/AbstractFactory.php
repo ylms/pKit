@@ -36,6 +36,23 @@ namespace pKit\System\Patterns\MVC\Models
         }
 
         /**
+         * @return array
+         */
+        public function getAll()
+        {
+            $query = $this->connection->prepare('SELECT * FROM `'.$this->table.'`');
+            $query->execute();
+
+            $result = [];
+            while($row = $query->fetchObject())
+            {
+                $result[] = $this->create($row);
+            }
+
+            return $result;
+        }
+
+        /**
          * @return string
          */
         public function getTable()

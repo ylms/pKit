@@ -2,9 +2,14 @@
 
 namespace App\Controllers
 {
+
+    use pKit\System\Helpers\Arrays\ArrayList;
+    use pKit\System\Helpers\Pagers\Pager;
     use pKit\System\Patterns\MVC\Controllers\Controller;
     use pKit\System\Utils\Routing\Interfaces\IRoute;
     use pKit\System\Utils\Routing\Route;
+
+    use App\Models\User\UserFactory;
 
     /**
      * Class IndexController
@@ -18,11 +23,7 @@ namespace App\Controllers
          */
         public function onCall(Route $route, array $vars)
         {
-            if($this->checkAuth(2)) echo "hallo";
 
-            $tpl = $this->getControllerParameters()->getTemplateManager()->make('test.tpl.php');
-
-            $this->getControllerParameters()->getView()->display($tpl);
         }
 
         /**

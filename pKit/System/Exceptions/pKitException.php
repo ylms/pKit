@@ -14,7 +14,7 @@ namespace pKit\System\Exceptions
          * pKitException constructor.
          * @param string $file
          * @param int $line
-         * @param \Exception $message
+         * @param string $message
          * @param null $object
          */
         public function __construct($file, $line, $message, $object = null)
