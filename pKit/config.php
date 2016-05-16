@@ -11,11 +11,7 @@ return (object) [
     'PATHS' => (object)[
 
         'templates' => $php_path.'/pKit/App/Templates',
-
-        'controllers' => $php_path.'/pKit/App/Controllers',
-
-        'models' => $php_path.'/pKit/App/Models',
-
+		
         'pkit' => (object)[
 
             'system' => $pkit_path.'/System'
@@ -45,8 +41,7 @@ return (object) [
         ],
 
         'modify' => [
-            //'pKit' => $php_path.'/App'
-            //'App' => $php_path.'/App'
+		
         ]
     ]
 ];
