@@ -25,6 +25,14 @@ namespace pKit\System {
 
         }
 
+        /**
+         * @return string
+         */
+        public function getUrlIdentifier()
+        {
+            return $this->config->URL_IDENTIFIER;
+        }
+
         /*
          * @returns string
          */

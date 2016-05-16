@@ -8,6 +8,8 @@ return (object) [
 
     'PROJECT_NAME' => 'pKit',
 
+    'URL_IDENTIFIER' => 'r',
+
     'PATHS' => (object)[
 
         'templates' => $php_path.'/pKit/App/Templates',

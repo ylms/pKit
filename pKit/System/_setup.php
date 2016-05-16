@@ -62,7 +62,7 @@ try
     $pdo->beginTransaction();
     $pdo->query("SET NAMES 'utf8'");
 
-    $router->listenOn($router->getURLParameter('r'), function (RouterResult $routerResult) {
+    $router->listenOn($router->getURLParameter($config->getUrlIdentifier()), function (RouterResult $routerResult) {
         switch ($routerResult->getState()) {
             case RouteInfoResults::ACCESS_ALLOWED:
                 return $routerResult->callController();
