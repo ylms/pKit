@@ -88,10 +88,10 @@ namespace pKit\System\Patterns\MVC\Models
         {
             try
             {
-                $query = $this->connection->prepare('UPDATE `'.$this->table.'` SET `'.$row.'` = :val');
-                $query->execute([':val' => $val]);
+                $query = $this->connection->prepare('UPDATE `'.$this->table.'` SET `'.$row.'` = :val WHERE `id` = :id');
+                $query->execute([':val' => $val, ':id' => $this->row->id]);
 
-                $this->updateRowByColumn('id', $this->getRow()->id);
+                $this->updateRowByColumn('id', $this->row->id);
             }
             catch(\PDOException $e)
             {
