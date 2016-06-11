@@ -12,8 +12,9 @@ namespace pKit\System {
     {
         private $config = [];
 
-        /*
-         * @params: object $config
+        /**
+         * Config constructor.
+         * @param object $config
          */
         public function __construct($config)
         {
@@ -33,48 +34,56 @@ namespace pKit\System {
             return $this->config->URL_IDENTIFIER;
         }
 
-        /*
-         * @returns string
+        /**
+         * @return string
          */
         public function getVersion()
         {
             return $this->config->VERSION;
         }
 
-        /*
-         * @returns string
+        /**
+         * @return string
          */
         public function getProjectName()
         {
             return $this->config->PROJECT_NAME;
         }
 
-        /*
-         * @returns array
+        /**
+         * @return string
+         */
+        public function getCSRFHash()
+        {
+            return $this->config->CSRF_HASH;
+        }
+
+        /**
+         * @return array
          */
         public function getPaths()
         {
             return $this->config->PATHS;
         }
 
-        /*
-         * @returns array
+        /**
+         * @return array
          */
         public function getDatabaseSettings()
         {
             return $this->config->DATABASE;
         }
 
-        /*
-         * @returns array
+        /**
+         * @return array
          */
         public function getAutoloaderIgnoringPaths()
         {
             return $this->config->AUTOLOADER->ignore;
         }
 
-        /*
-         * @returns array
+        /**
+         * @return array
          */
         public function getAutoloaderModifingPaths()
         {

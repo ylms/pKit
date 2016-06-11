@@ -10,6 +10,8 @@ return (object) [
 
     'URL_IDENTIFIER' => 'r',
 
+    'CSRF_HASH' => 'x\?/ß#_oPa092ß0?=´á0[)86_,.=e$',
+
     'PATHS' => (object)[
 
         'templates' => $php_path.'/pKit/App/Templates',
@@ -19,8 +21,6 @@ return (object) [
             'system' => $pkit_path.'/System'
 
         ],
-
-        'app' => $php_path.'/App',
 
         'site' => 'http://127.0.0.1/pkit'
     ],

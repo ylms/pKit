@@ -4,6 +4,7 @@ namespace App\Controllers
 {
 
     use pKit\System\Helpers\Arrays\ArrayList;
+    use pKit\System\Helpers\JSON\JSONWriter;
     use pKit\System\Helpers\Pagers\Pager;
     use pKit\System\Patterns\MVC\Controllers\Controller;
     use pKit\System\Utils\Routing\Interfaces\IRoute;
@@ -32,9 +33,7 @@ namespace App\Controllers
         public function getRoutes()
         {
             return [
-                new Route('/', $this),
-                new Route('/index', $this),
-                new Route('/{string:str}/{bool:boolean}/{int:zahl}/{base64:base}/{float:float}', $this)
+                new Route('/', $this)
             ];
         }
     }

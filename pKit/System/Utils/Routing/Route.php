@@ -12,7 +12,7 @@ namespace pKit\System\Utils\Routing
     {
         private $url;
         private $controller;
-        private $data;
+        private $info;
 
         /**
          * Route constructor.
@@ -20,11 +20,11 @@ namespace pKit\System\Utils\Routing
          * @param IRoute $controller
          * @param array $data
          */
-        public function __construct($url, IRoute $controller, $data = [])
+        public function __construct($url, IRoute $controller, $info = [])
         {
             $this->url = $url;
             $this->controller = $controller;
-            $this->data = $data;
+            $this->info = $info;
         }
 
         /**
@@ -46,9 +46,9 @@ namespace pKit\System\Utils\Routing
         /**
          * @return array
          */
-        public function getData()
+        public function getInfo()
         {
-            return $this->data;
+            return $this->info;
         }
     }
 }

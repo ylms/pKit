@@ -77,6 +77,15 @@ namespace pKit\System\Patterns\MVC\Controllers
             {
                 return $user;
             };
+
+            $config = $this->getControllerParameters()->getApp()->getConfig();
+            $this->getControllerParameters()->getView()->getConfig = function() use ($config)
+            {
+                return (object)[
+                    'SITE_NAME' => $config->getProjectName(),
+                    'URL' => $config->getPaths()->site
+                ];
+            };
         }
 
         /**

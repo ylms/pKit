@@ -20,6 +20,8 @@ use pKit\System\Patterns\MVC\Models\Handlers\ModelsManager;
 
 use pKit\System\Common;
 
+use pKit\System\Utils\AntiCSRF\AntiCSRF;
+
 session_start();
 
 require_once __DIR__ . '/Exceptions/pKitException.php';
@@ -30,6 +32,7 @@ $config = new Config($configuration);
 require_once __DIR__ . '/autoloader.php';
 
 Common::init($config);
+AntiCSRF::init($config->getCSRFHash());
 
 $pdo = new PDO($config->getDatabaseSettings()->string, $config->getDatabaseSettings()->user, $config->getDatabaseSettings()->password);
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
