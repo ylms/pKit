@@ -4,10 +4,8 @@ namespace pKit\System\Patterns\MVC\Templates
 {
 
     use pKit\System\Patterns\MVC\Templates\Managers\TemplateManager;
-    use pKit\System\Patterns\MVC\Templates\Variables\TemplateVariableString;
-    use pKit\System\Patterns\MVC\Templates\Variables\NullTemplateVariable;
-    use pKit\System\Patterns\MVC\Templates\Variables\TemplateVariableCallable;
-    use pKit\System\Patterns\MVC\Templates\Variables\NullTemplateVariableCallback;
+    use pKit\System\Patterns\MVC\Templates\Variables\NullVariable;
+    use pKit\System\Patterns\MVC\Templates\Variables\NullFunction;
 
     /**
      * Class Template
@@ -18,6 +16,7 @@ namespace pKit\System\Patterns\MVC\Templates
         private $file;
         private $path;
         private $vars = [];
+        private $functions = [];
         private $templateManager;
 
         private $view = null;
@@ -75,17 +74,17 @@ namespace pKit\System\Patterns\MVC\Templates
         {
             if(is_callable($val))
             {
-                $this->vars[$var] = new TemplateVariableCallable($var, $val);
+                $this->functions[$var] = $val;
             }
             else
             {
-                $this->vars[$var] = new TemplateVariableString($var, $val);
+                $this->vars[$var] = $val;
             }
         }
 
         /**
          * @param string $var
-         * @return TemplateVariableString|NullTemplateVariable
+         * @return mixed|NullFunction
          */
         public function __get($var)
         {
@@ -94,26 +93,31 @@ namespace pKit\System\Patterns\MVC\Templates
                 return $this->vars[$var];
             }
 
-            return new NullTemplateVariable($var, $this->file);
+            return new NullVariable($var);
         }
 
         /**
          * @param string $var
          * @param array $args
-         * @return mixed|NullTemplateVariableCallback
+         * @return mixed|NullFunction
          */
         public function __call($var, array $args)
         {
-            $variable = $this->$var;
+            if(isset($this->functions[$var]))
+            {
+                return call_user_func_array($this->functions[$var], $args);
+            }
 
-            if($variable instanceof NullTemplateVariable)
-            {
-                return new NullTemplateVariableCallback($var, $this->file, $args);
-            }
-            else if($variable instanceof TemplateVariableCallable)
-            {
-                return $variable->call($args);
-            }
+            return new NullFunction($var, $args);
+        }
+
+        /**
+         * @param $name
+         * @return bool
+         */
+        public function __isset($name)
+        {
+            return isset($this->vars[$name]) OR isset($this->functions[$name]);
         }
 
         /**
@@ -121,7 +125,6 @@ namespace pKit\System\Patterns\MVC\Templates
          */
         public function display($once = false)
         {
-
             if($once)
             {
                 require_once $this->path.'/'.$this->file;

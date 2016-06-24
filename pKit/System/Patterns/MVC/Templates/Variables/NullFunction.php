@@ -3,21 +3,20 @@
 namespace pKit\System\Patterns\MVC\Templates\Variables
 {
 
-    /**
-     * Class NullVariable
-     * @package pKit\System\Patterns\MVC\Templates\Variables
-     */
-    final class NullVariable
+    final class NullFunction
     {
         private $name;
+        private $args;
 
         /**
-         * NullVariable constructor.
+         * NullFunction constructor.
          * @param $name
+         * @param array $args
          */
-        public function __construct($name)
+        public function __construct($name, array $args)
         {
             $this->name = $name;
+            $this->args = $args;
         }
 
         /**
@@ -25,7 +24,7 @@ namespace pKit\System\Patterns\MVC\Templates\Variables
          */
         public function __toString()
         {
-            return "{\$".$this->name."}";
+            return "{".$this->name."(".implode(",", $this->args).")}";
         }
     }
 }

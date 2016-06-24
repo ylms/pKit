@@ -2,10 +2,9 @@
 
 namespace pKit\System\Patterns\MVC\Templates
 {
-    use pKit\System\Patterns\MVC\Templates\Variables\TemplateVariableString;
-    use pKit\System\Patterns\MVC\Templates\Variables\TemplateVariableCallable;
-    use pKit\System\Patterns\MVC\Templates\Variables\NullViewVariable;
-    use pKit\System\Patterns\MVC\Templates\Variables\NullViewVariableCallback;
+
+    use pKit\System\Patterns\MVC\Templates\Variables\NullVariable;
+    use pKit\System\Patterns\MVC\Templates\Variables\NullFunction;
 
     /**
      * Class View
@@ -14,6 +13,7 @@ namespace pKit\System\Patterns\MVC\Templates
     final class View
     {
         private $vars = [];
+        private $functions = [];
 
         /**
          * @param Template $tpl
@@ -34,17 +34,17 @@ namespace pKit\System\Patterns\MVC\Templates
         {
             if(is_callable($val))
             {
-                $this->vars[$var] = new TemplateVariableCallable($var, $val);
+                $this->functions[$var] = $val;
             }
             else
             {
-                $this->vars[$var] = new TemplateVariableString($var, $val);
+                $this->vars[$var] = $val;
             }
         }
 
         /**
-         * @param string $var
-         * @return TextVariableString|NullViewVariable
+         * @param $var
+         * @return NullVariable
          */
         public function __get($var)
         {
@@ -53,26 +53,31 @@ namespace pKit\System\Patterns\MVC\Templates
                 return $this->vars[$var];
             }
 
-            return new NullViewVariable($var);
+            return new NullVariable('View::'.$var);
         }
 
         /**
-         * @param string $var
+         * @param $name
+         * @return bool
+         */
+        public function __isset($name)
+        {
+            return isset($this->vars[$name]) OR isset($this->functions[$name]);
+        }
+
+        /**
+         * @param $var
          * @param array $args
-         * @return mixed|NullViewVariableCallback
+         * @return mixed
          */
         public function __call($var, array $args)
         {
-            $variable = $this->$var;
+            if(isset($this->functions[$var]))
+            {
+                return call_user_func_array($this->functions[$var], $args);
+            }
 
-            if($variable instanceof NullViewVariable)
-            {
-                return new NullViewVariableCallback($var, $args);
-            }
-            else if($variable instanceof TemplateVariableCallable)
-            {
-                return $variable->call($args);
-            }
+            return new NullFunction('View::'.$var, $args);
         }
     }
 }
