@@ -53,6 +53,7 @@ foreach($controllerCollector->getByInstance(IRoute::class) as $controller)
 {
     foreach($controller->getRoutes() as $route)
     {
+        $route->bindController($controller);
         $routeCollector->add($route);
     }
 }

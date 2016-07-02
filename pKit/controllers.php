@@ -2,4 +2,7 @@
 
 use App\Controllers\IndexController;
 
-$controllerCollector->add(new IndexController($controllerParameters));
+$cc = $controllerCollector;
+$cp = $controllerParameters;
+
+$cc->add(new IndexController($cp));

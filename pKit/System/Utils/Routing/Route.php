@@ -2,6 +2,8 @@
 
 namespace pKit\System\Utils\Routing
 {
+
+    use pKit\System\Patterns\MVC\Controllers\Controller;
     use pKit\System\Utils\Routing\Interfaces\IRoute;
 
     /**
@@ -17,14 +19,20 @@ namespace pKit\System\Utils\Routing
         /**
          * Route constructor.
          * @param string $url
-         * @param IRoute $controller
-         * @param array $data
+         * @param array $info
          */
-        public function __construct($url, IRoute $controller, $info = [])
+        public function __construct($url, $info = [])
         {
             $this->url = $url;
-            $this->controller = $controller;
             $this->info = $info;
+        }
+
+        /**
+         * @param Controller $controller
+         */
+        public function bindController(Controller $controller)
+        {
+            $this->controller = $controller;
         }
 
         /**
