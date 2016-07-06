@@ -75,6 +75,11 @@ try
             case RouteInfoResults::NOT_FOUND:
                 return Common::redirect('error');
             break;
+
+            case RouteInfoResults::ACCESS_DENIED:
+                echo "Access denied!";
+                exit;
+                break;
         }
     });
 

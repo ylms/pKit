@@ -10,6 +10,9 @@ namespace pKit\System\Utils\AntiCSRF
     {
         private static $hash;
 
+        /**
+         * @param $hash
+         */
         public static function init($hash)
         {
             self::$hash = $hash;
@@ -20,6 +23,11 @@ namespace pKit\System\Utils\AntiCSRF
             }
         }
 
+        /**
+         * @param $token
+         * @param bool $recreate
+         * @return bool
+         */
         public static function isValid($token, $recreate = false)
         {
             if($_SESSION['CSRFToken'] == $token)
@@ -35,6 +43,9 @@ namespace pKit\System\Utils\AntiCSRF
             return false;
         }
 
+        /**
+         * @return mixed
+         */
         public static function getToken()
         {
             return $_SESSION['CSRFToken'];

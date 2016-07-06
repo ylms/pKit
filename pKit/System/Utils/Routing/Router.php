@@ -39,7 +39,15 @@ namespace pKit\System\Utils\Routing
                 {
                     if($route == $_route->getURL())
                     {
-                        $routerInfo->setState(RouteInfoResults::ACCESS_ALLOWED);
+                        if(!$this->isValidAccessType($_route->getAccessType()))
+                        {
+                            $routerInfo->setState(RouteInfoResults::ACCESS_DENIED);
+                        }
+                        else
+                        {
+                            $routerInfo->setState(RouteInfoResults::ACCESS_ALLOWED);
+                        }
+
                         $routerInfo->setRoute($_route);
 
                         return $this->prepareRoute($routerInfo, $callback);
@@ -54,10 +62,18 @@ namespace pKit\System\Utils\Routing
                                 $routerInfo->setParameter($param['name'], $param['value']);
                             }
 
-                            $routerInfo->setState(RouteInfoResults::ACCESS_ALLOWED);
+                            if(!$this->isValidAccessType($_route->getAccessType()))
+                            {
+                                $routerInfo->setState(RouteInfoResults::ACCESS_DENIED);
+                            }
+                            else
+                            {
+                                $routerInfo->setState(RouteInfoResults::ACCESS_ALLOWED);
+                            }
+
                             $routerInfo->setRoute($_route);
 
-                            return $this->PrepareRoute($routerInfo, $callback);
+                            return $this->prepareRoute($routerInfo, $callback);
                         }
                     }
                 }
@@ -69,6 +85,36 @@ namespace pKit\System\Utils\Routing
             {
                 throw new pKitException(__DIR__.'\Route.php', 23, '$callback has to be an instance of object, '.gettype($callback).' given');
             }
+        }
+
+        /**
+         * @param $type
+         * @return bool
+         */
+        private function isValidAccessType($type)
+        {
+            switch($type)
+            {
+                case 1: // POST
+                    if($_SERVER['REQUEST_METHOD'] == "POST")
+                    {
+                        return true;
+                    }
+                    break;
+
+                case 2: // GET
+                    if($_SERVER['REQUEST_METHOD'] == "GET")
+                    {
+                        return true;
+                    }
+                    break;
+
+                case 3: // BOTH
+                    return true;
+                    break;
+            }
+
+            return false;
         }
 
         /**

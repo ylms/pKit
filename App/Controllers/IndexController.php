@@ -6,6 +6,7 @@ namespace App\Controllers
     use pKit\System\Patterns\MVC\Controllers\Controller;
     use pKit\System\Utils\Routing\Interfaces\IRoute;
     use pKit\System\Utils\Routing\Route;
+    use pKit\System\Utils\Routing\RouteTypes;
 
     /**
      * Class IndexController
@@ -16,11 +17,12 @@ namespace App\Controllers
         /**
          * @param Route $route
          * @param array $vars
+         * @return void
          */
         public function onCall(Route $route, array $vars)
         {
             $tpl = $this->getControllerParameters()->getTemplateManager()->make('test.tpl.php');
-            $tpl->welcomeMessage = "Hallo Welt!";
+            $tpl->welcomeMessage = "Hello World!";
 
             $this->getControllerParameters()->getView()->display($tpl);
         }
@@ -31,7 +33,7 @@ namespace App\Controllers
         public function getRoutes()
         {
             return [
-                new Route('/')
+                new Route('/', RouteTypes::GET)
             ];
         }
     }

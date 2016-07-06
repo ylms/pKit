@@ -15,16 +15,27 @@ namespace pKit\System\Utils\Routing
         private $url;
         private $controller;
         private $info;
+        private $accessType;
 
         /**
          * Route constructor.
-         * @param string $url
+         * @param $url
+         * @param int $accessType
          * @param array $info
          */
-        public function __construct($url, $info = [])
+        public function __construct($url, $accessType = RouteTypes::BOTH, $info = [])
         {
             $this->url = $url;
+            $this->accessType = $accessType;
             $this->info = $info;
+        }
+
+        /**
+         * @return int
+         */
+        public function getAccessType()
+        {
+            return $this->accessType;
         }
 
         /**
